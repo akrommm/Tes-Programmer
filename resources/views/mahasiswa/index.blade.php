@@ -13,7 +13,7 @@
                         <th style="color: white;" width=" 90px">AKSI</th>
                         <th style="color: white;">NIM</th>
                         <th style="color: white;">NAMA</th>
-                        <th style="color: white;">PRODI</th>
+                        <th style="color: white;">PROGRAM STUDI</th>
                         <th style="color: white;">No. HP</th>
                     </thead>
                     <tbody>
