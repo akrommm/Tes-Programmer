@@ -1,14 +1,14 @@
 <x-app>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> TAMBAH DATA USER
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> TAMBAH DATA MAHASISWA
         </h5>
     </div>
     <br>
-    <x-template.button.back-button url="admin/user" />
+    <x-template.button.back-button url="admin/mahasiswa" />
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                Tambah Data User
+                Tambah Data Mahasiswa
             </div>
         </div>
         <div class="card-body">

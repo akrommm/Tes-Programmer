@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
         $mahasiswa->prodi = request('prodi');
         $mahasiswa->save();
 
-        return redirect('admin/mahasiswa')->with('success', 'Data User Berhasil Ditambahkan');
+        return redirect('admin/mahasiswa')->with('success', 'Data Mahasiswa Berhasil Ditambahkan');
     }
 
     public function show($id)
