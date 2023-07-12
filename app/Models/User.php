@@ -7,39 +7,37 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends ModelAuthenticate
 {
+    protected $table = 'user';
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    function handleUploadFoto()
+    {
+        $this->handleDelete();
+        if (request()->hasFile('foto')) {
+            $foto = request()->file('foto');
+            $destination = "images/profile";
+            $randomStr = Str::random(5);
+            $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $foto->extension();
+            $url = $foto->storeAs($destination, $filename);
+            $this->foto = "app/" . $url;
+            $this->save();
+        }
+    }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    function handleDelete()
+    {
+        $foto = $this->foto;
+        if ($foto) {
+            $path = public_path($foto);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            return true;
+        }
+    }
 }
