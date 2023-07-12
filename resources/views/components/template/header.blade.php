@@ -18,8 +18,6 @@
                     <div class="avatar avatar-image  m-h-10 m-r-15">
                         @if (auth()->user()->foto)
                         <img src="{{url('/'.auth()->user()->foto)}}" alt="User Image">
-                        @else
-                        <img src="{{ url('/') }}/app/images/profile.png" alt="">
                         @endif
                     </div>
                 </div>
